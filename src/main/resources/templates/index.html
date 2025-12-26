@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio | Santi Martínez</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+
+<header id="header">
+  <h1>Santi Martínez · Full stack</h1>
+  <div class="lista-tecnologias">
+    <div class="inner">
+      <div class="tag"><span>#</span>Java</div>
+      <div class="tag"><span>#</span>SpringBoot</div>
+      <div class="tag"><span>#</span>MongoDB</div>
+      <div class="tag"><span>#</span>Typescript</div>
+      <div class="tag"><span>#</span>AndroidStudio</div>
+      <div class="tag"><span>#</span>Git</div>
+      <div class="tag"><span>#</span>Docker</div>
+      <div class="tag"><span>#</span>Linux</div>
+
+      <!-- DUPLICADO -->
+      <div class="tag"><span>#</span>Java</div>
+      <div class="tag"><span>#</span>SpringBoot</div>
+      <div class="tag"><span>#</span>MongoDB</div>
+      <div class="tag"><span>#</span>Typescript</div>
+      <div class="tag"><span>#</span>AndroidStudio</div>
+      <div class="tag"><span>#</span>Git</div>
+      <div class="tag"><span>#</span>Docker</div>
+      <div class="tag"><span>#</span>Linux</div>
+    </div>
+    <div class="fade"></div>
+  </div>
+
+</header>
+
+<main>
+
+  <article class="d-flex justify-content-center gap-20 align-items-center" id="article_biografia">
+    <div id="social_media">
+      <a href="https://github.com/santimartinezzgb" target="_blank" rel="noopener noreferrer">
+        <img class="img" th:src="@{/images/github.jpg}" alt="github">
+      </a>
+      <a href="https://www.linkedin.com/in/santiago-mart%C3%ADnez-gonz%C3%A1lez-besada-bb6467335/" target="_blank" rel="noopener noreferrer">
+        <img class="img" th:src="@{/images/linkedin.jpg}" alt="linkedin">
+      </a>
+      <a href="https://www.instagram.com/santimartinezzgb" target="_blank" rel="noopener noreferrer">
+        <img class="img" th:src="@{/images/instagram.jpg}" alt="instagram">
+      </a>
+    </div>
+
+    <section id="section_biografia">
+      <p>
+        ¡Hola! Soy un desarrollador full stack apasionado por la tecnología y la programación.
+        Me especializo en Java y Spring Boot para el desarrollo backend, con experiencia en el desarrollo
+        de aplicaciones móviles con Android Studio. Además, acostumbro a trabajar en entornos Linux.
+      </p>
+      <p>
+        A lo largo de mi trayectoria, he desarrollado diversos proyectos personales, incluyendo aplicaciones
+        móviles, de escritorio, web y scripts para automatizar tareas.
+      </p>
+      <p>
+        Estoy siempre en busca de nuevos desafíos y oportunidades para aprender y crecer en el campo del desarrollo de software.
+        ¡No dudes en contactarme si quieres colaborar o simplemente charlar sobre tecnología!
+      </p>
+    </section>
+    <img th:src="@{/images/santi.png}" alt="Foto de perfil" id="foto_perfil">
+  </article>
+
+  <section id="section_principal">
+
+    <div id="div_mis_proyectos">
+      <h2>Mis proyectos</h2>
+    </div>
+
+    <div id="div_proyectos">
+      <div th:replace="fragments/card :: div(
+          @{/images/tacopaco.png},
+          'Gestor de restaurante',
+          'App Móvil y App Escritorio para la gestión, servicio y liberación de mesas de un restaurante. Conecta con MongoDB a través de una API Rest.',
+          'https://github.com/santimartinezzgb/gestion-mesas-restaurante',
+          'Java',
+          'red'
+        )"></div>
+
+      <div th:replace="fragments/card :: div(
+          @{/images/docker_info.png},
+          'Docker Info',
+          'Script escrito en shell para mostrar la información básica de Docker: imágenes, contenedores, volúmenes y redes.',
+          'https://github.com/santimartinezzgb/dockerinfo',
+          'Shell',
+          'green'
+        )"></div>
+
+      <div th:replace="fragments/card :: div(
+          @{/images/sudoku.png},
+          'Sudoku',
+          'App móvil con total jugabilidad de un sudoku, con 3 niveles de dificultad y con ranking de puntuaciones. Conecta con MongoDB a través de una API Rest.',
+          'https://github.com/santimartinezzgb/sudoku',
+          'Java',
+          'red'
+        )"></div>
+
+      <div th:replace="fragments/card :: div(
+          @{/images/docker_manager.png},
+          'Docker Manager',
+          'Gestor de docker tipo CRUD para administrar imágenes, contenedores, volúmenes y redes.',
+          'https://github.com/santimartinezzgb/Docker-manager',
+          'Shell',
+          'green'
+        )"></div>
+    </div>
+
+  </section>
+</main>
+
+<footer id="footer">
+  © 2025 · Santi Martínez
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/script.js}" defer></script>
+
+</body>
+</html>

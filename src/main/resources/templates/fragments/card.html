@@ -1,0 +1,27 @@
+<div th:fragment="div(logo, nombre, descripcion, link, lenguaje, color)">
+    <div class="card">
+        <div class="card-body d-flex flex-column justify-content-between align-items-start h-100">
+
+            <img th:src="@{${logo}}" alt="logo" class="card-img">
+
+            <h5 class="card-title" th:text="${nombre}">Nombre</h5>
+
+            <p class="card-text" th:text="${descripcion}">Descripción</p>
+
+            <div class="card-footer-custom d-flex align-items-end justify-content-between w-100">
+                <a th:href="@{${link}}"
+                   class="btn bg-black text-white"
+                   target="_blank">
+                    Ver proyecto
+                </a>
+
+                <span class="badge lenguaje-badge"
+                      th:text="${lenguaje}"
+                      th:style="'background-color:' + ${color}">
+          Java
+        </span>
+            </div>
+
+        </div>
+    </div>
+</div>
