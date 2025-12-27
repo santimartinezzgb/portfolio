@@ -13,7 +13,6 @@
 <body>
 
 <header id="header">
-  <h1>Santi Martínez · Full stack</h1>
   <div class="lista-tecnologias">
     <div class="inner">
       <div class="tag"><span>#</span>Java</div>
@@ -37,28 +36,17 @@
     </div>
     <div class="fade"></div>
   </div>
+  <h1>Santi Martínez · Full stack</h1>
 
 </header>
 
 <main>
 
-  <article class="d-flex justify-content-center gap-20 align-items-center" id="article_biografia">
-    <div id="social_media">
-      <a href="https://github.com/santimartinezzgb" target="_blank" rel="noopener noreferrer">
-        <img class="img" th:src="@{/images/github.jpg}" alt="github">
-      </a>
-      <a href="https://www.linkedin.com/in/santiago-mart%C3%ADnez-gonz%C3%A1lez-besada-bb6467335/" target="_blank" rel="noopener noreferrer">
-        <img class="img" th:src="@{/images/linkedin.jpg}" alt="linkedin">
-      </a>
-      <a href="https://www.instagram.com/santimartinezzgb" target="_blank" rel="noopener noreferrer">
-        <img class="img" th:src="@{/images/instagram.jpg}" alt="instagram">
-      </a>
-    </div>
+  <article class="d-flex flex-column justify-content-center gap-20 align-items-center" id="article_biografia">
 
     <section id="section_biografia">
       <p>
-        ¡Hola! Soy un desarrollador full stack apasionado por la tecnología y la programación.
-        Me especializo en Java y Spring Boot para el desarrollo backend, con experiencia en el desarrollo
+        ¡Hola! Soy un desarrollador full stack especializado en Java, con experiencia en el desarrollo
         de aplicaciones móviles con Android Studio. Además, acostumbro a trabajar en entornos Linux.
       </p>
       <p>
@@ -70,7 +58,20 @@
         ¡No dudes en contactarme si quieres colaborar o simplemente charlar sobre tecnología!
       </p>
     </section>
+
     <img th:src="@{/images/santi.png}" alt="Foto de perfil" id="foto_perfil">
+
+    <div id="social_media">
+      <a class="cuadro_img" href="https://github.com/santimartinezzgb" target="_blank" rel="noopener noreferrer">
+        <img id="img_github" th:src="@{/images/git_logo.png}" alt="github">
+      </a>
+      <a class="cuadro_img" href="https://www.linkedin.com/in/santiago-mart%C3%ADnez-gonz%C3%A1lez-besada-bb6467335/" target="_blank" rel="noopener noreferrer">
+        <img id="img_linkedin" th:src="@{/images/linkedin.jpg}" alt="linkedin">
+      </a>
+      <a class="cuadro_img" href="https://www.instagram.com/santimartinezzgb" target="_blank" rel="noopener noreferrer">
+        <img id="img_instagram" th:src="@{/images/instagram.png}" alt="instagram">
+      </a>
+    </div>
   </article>
 
   <section id="section_principal">
@@ -80,41 +81,34 @@
     </div>
 
     <div id="div_proyectos">
-      <div th:replace="fragments/card :: div(
-          @{/images/tacopaco.png},
-          'Gestor de restaurante',
-          'App Móvil y App Escritorio para la gestión, servicio y liberación de mesas de un restaurante. Conecta con MongoDB a través de una API Rest.',
-          'https://github.com/santimartinezzgb/gestion-mesas-restaurante',
-          'Java',
-          'red'
-        )"></div>
+      <div th:each="tarjeta : ${tarjetas}">
 
-      <div th:replace="fragments/card :: div(
-          @{/images/docker_info.png},
-          'Docker Info',
-          'Script escrito en shell para mostrar la información básica de Docker: imágenes, contenedores, volúmenes y redes.',
-          'https://github.com/santimartinezzgb/dockerinfo',
-          'Shell',
-          'green'
-        )"></div>
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-between align-items-start h-100">
+            <div class="card-estrellas">
+              <span id="num_estrellas" th:text="${tarjeta.contadorEstrellas} + ' ⭐'">0 ⭐</span>
+              <button id="btn_estrellas">Star</button>
+            </div>
+            <img th:src="@{${tarjeta.urlImagen}}" alt="logo" class="card-img">
+            <h5 class="card-title" th:text="${tarjeta.titulo}">Nombre</h5>
+            <p class="card-text" th:text="${tarjeta.descripcion}">Descripción</p>
+            <div class="card-footer-custom d-flex align-items-end justify-content-between w-100">
+              <a th:href="${tarjeta.urlProyecto}" class="btn bg-black text-white" target="_blank">
+                Ver proyecto
+              </a>
+              <span class="badge lenguaje-badge"
+                    th:text="${tarjeta.lenguaje}"
+                    th:style="'background-color:' + ${tarjeta.color_lenguaje}">
+              Java
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div th:replace="fragments/card :: div(
-          @{/images/sudoku.png},
-          'Sudoku',
-          'App móvil con total jugabilidad de un sudoku, con 3 niveles de dificultad y con ranking de puntuaciones. Conecta con MongoDB a través de una API Rest.',
-          'https://github.com/santimartinezzgb/sudoku',
-          'Java',
-          'red'
-        )"></div>
-
-      <div th:replace="fragments/card :: div(
-          @{/images/docker_manager.png},
-          'Docker Manager',
-          'Gestor de docker tipo CRUD para administrar imágenes, contenedores, volúmenes y redes.',
-          'https://github.com/santimartinezzgb/Docker-manager',
-          'Shell',
-          'green'
-        )"></div>
+      <p th:if="${tarjetas == null or tarjetas.isEmpty()}">
+        No hay proyectos disponibles
+      </p>
     </div>
 
   </section>

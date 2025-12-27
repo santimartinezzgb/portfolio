@@ -35,3 +35,17 @@ out/
 
 ### VS Code ###
 .vscode/
+
+.env
+application.properties
+application-*.properties
+.DS_Store
+*.log
+logs/
+*.war
+*.ear
+*.jar
+temp/
+tmp/
+*.class
+*.log
